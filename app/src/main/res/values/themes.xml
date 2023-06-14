@@ -15,10 +15,10 @@
     </style>
 
     <style name="Widget.AppTheme.LikeCheckBox"
-        parent="Widget.MaterialComponents.Button.TextButton">
+        parent="Widget.Material3.Button.IconButton">
         <item name="iconTint">@color/like_checkbox_tint</item>
-        <item name="minHeight">24dp</item>
-        <item name="minWidth">24dp</item>
+        <item name="minHeight">@dimen/like_dimen</item>
+        <item name="minWidth">@dimen/like_dimen</item>
     </style>
 
 </resources>

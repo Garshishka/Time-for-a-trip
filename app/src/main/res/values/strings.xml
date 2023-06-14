@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">Time for a trip</string>
+    <string name="departure">"Departure: "</string>
+    <string name="return_">Return:</string>
 </resources>

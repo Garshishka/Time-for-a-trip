@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="app_name">Пора в путешествие</string>
+    <string name="departure">"Отправление: "</string>
+    <string name="return_">"Возвращение: "</string>
 </resources>

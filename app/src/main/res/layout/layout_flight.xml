@@ -12,21 +12,53 @@
         android:layout_margin="@dimen/default_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         android:textStyle="bold"
-        app:layout_constraintBottom_toTopOf="@id/date_text"
+        app:layout_constraintBottom_toTopOf="@id/start_date_text"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         tools:text="Start city - End city" />
 
     <com.google.android.material.textview.MaterialTextView
-        android:id="@+id/date_text"
+        android:id="@+id/start_date_text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toTopOf="@id/end_date_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/city_text"
+        android:text="@string/departure"/>
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/start_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@id/start_date_text"
+        app:layout_constraintTop_toTopOf="@id/start_date_text"
+        app:layout_constraintStart_toEndOf="@id/start_date_text"
+        tools:text="Start date" />
+
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/end_date_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="@dimen/default_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Medium"
         app:layout_constraintBottom_toTopOf="@id/price_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/city_text"
-        tools:text="Start date - End date" />
+        app:layout_constraintTop_toBottomOf="@id/start_date_text"
+        android:text="@string/return_"
+        />
+    <com.google.android.material.textview.MaterialTextView
+        android:id="@+id/end_date"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:textAppearance="@style/TextAppearance.AppCompat.Medium"
+        app:layout_constraintBottom_toBottomOf="@id/end_date_text"
+        app:layout_constraintTop_toTopOf="@id/end_date_text"
+        app:layout_constraintStart_toEndOf="@id/end_date_text"
+        tools:text="End date"/>
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/price_text"
@@ -35,18 +67,26 @@
         android:layout_margin="@dimen/default_margin"
         android:textAppearance="@style/TextAppearance.AppCompat.Title"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/date_text"
+        app:layout_constraintTop_toBottomOf="@id/end_date_text"
         tools:text="12345 руб." />
 
     <com.google.android.material.button.MaterialButton
         android:id="@+id/like_button"
         style="@style/Widget.AppTheme.LikeCheckBox"
-        android:layout_width="wrap_content"
+        android:layout_width="@dimen/like_dimen"
         android:layout_height="@dimen/like_dimen"
         android:checkable="true"
-        app:icon="@drawable/like_24dp"
+        app:icon="@drawable/like_48dp"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        tools:text="5" />
+        app:layout_constraintEnd_toEndOf="parent" />
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_marginHorizontal="@dimen/default_margin"
+        android:layout_marginTop="@dimen/default_margin"
+        app:layout_constraintTop_toBottomOf="@id/price_text"
+        android:background="@color/gray"
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </androidx.constraintlayout.widget.ConstraintLayout>
