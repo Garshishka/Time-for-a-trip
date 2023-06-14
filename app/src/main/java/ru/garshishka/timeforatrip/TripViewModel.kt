@@ -4,16 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.viewbinding.BuildConfig
 import kotlinx.coroutines.launch
 import okhttp3.OkHttpClient
 import okhttp3.logging.HttpLoggingInterceptor
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
+import ru.garshishka.timeforatrip.dto.Flights
 
 class TripViewModel : ViewModel() {
-    private val _tripsData = MutableLiveData<String>()
-    val tripsData: LiveData<String>
+    private val _tripsData = MutableLiveData<Flights>()
+    val tripsData: LiveData<Flights>
         get() = _tripsData
 
     fun load() = viewModelScope.launch {
@@ -38,12 +40,9 @@ class TripViewModel : ViewModel() {
 
         val response = apiService.getTickets(BodyRequest())
         if (!response.isSuccessful) {
-            _tripsData.value =
-                "code - ${response.code()} message - ${response.message()} er - ${response.errorBody()}}"
-
-        } else {
-            val trips = response.body() ?: throw RuntimeException("body is null")
-            _tripsData.value = trips.toString()
+            throw RuntimeException(response.message().toString())
         }
+        val trips = response.body() ?: throw RuntimeException("body is null")
+        _tripsData.value = trips
     }
 }

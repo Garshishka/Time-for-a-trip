@@ -23,6 +23,7 @@ data class Flight(
     val price: Int,
     @SerializedName("searchToken")
     val searchToken: String,
+    val likedByMe : Boolean = false,
 )
 
 data class Flights(
