@@ -9,8 +9,7 @@ import ru.garshishka.timeforatrip.R
 import ru.garshishka.timeforatrip.databinding.LayoutFlightBinding
 import ru.garshishka.timeforatrip.dto.Flight
 import ru.garshishka.timeforatrip.utils.FlightInteractionListener
-import java.time.ZonedDateTime
-import java.time.format.DateTimeFormatter
+import ru.garshishka.timeforatrip.utils.getTimeGlobal
 
 class FlightViewHolder(
     private val binding: LayoutFlightBinding,
@@ -20,13 +19,8 @@ class FlightViewHolder(
     fun bind(flight: Flight) {
         binding.apply {
             cityText.text = "${flight.startCity} - ${flight.endCity}"
-
-            val formatter = DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss Z z")
-            val formatterNew = DateTimeFormatter.ofPattern("HH:mm:ss yyyy.MM.dd Z z")
-            val startDateTime = ZonedDateTime.parse(flight.startDate, formatter)
-            val endDateTime = ZonedDateTime.parse(flight.endDate, formatter)
-            startDate.text = startDateTime.format(formatterNew)
-            endDate.text = endDateTime.format(formatterNew)
+            startDate.text = getTimeGlobal(flight.startDate)
+            endDate.text = getTimeGlobal(flight.endDate)
             priceText.text = "${flight.price} ₽"
             if (flight.likedByMe) {
                 likeIcon.setImageResource(R.drawable.favorite_48)

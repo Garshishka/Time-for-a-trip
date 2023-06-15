@@ -3,4 +3,6 @@
     <string name="app_name">Пора в путешествие</string>
     <string name="departure">"Отправление: "</string>
     <string name="return_">"Возвращение: "</string>
+    <string name="to_local_time">Локальное время</string>
+    <string name="to_global_time">Глобальное время</string>
 </resources>

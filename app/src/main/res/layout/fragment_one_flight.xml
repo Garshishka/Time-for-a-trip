@@ -80,8 +80,19 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/end_date_text"
-        app:layout_constraintBottom_toTopOf="@id/price_text"
+        app:layout_constraintBottom_toTopOf="@id/convert_time_button"
         tools:text="End date"/>
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/convert_time_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="@dimen/default_margin"
+        android:text="@string/to_local_time"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/end_date"
+        app:layout_constraintBottom_toTopOf="@id/price_text"
+        />
 
     <com.google.android.material.textview.MaterialTextView
         android:id="@+id/price_text"
@@ -91,7 +102,7 @@
         android:textAppearance="@style/TextAppearance.AppCompat.Headline"
         android:textStyle="bold"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@id/end_date"
+        app:layout_constraintTop_toBottomOf="@id/convert_time_button"
         tools:text="12345 руб." />
 
 

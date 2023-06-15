@@ -2,4 +2,6 @@
     <string name="app_name">Time for a trip</string>
     <string name="departure">"Departure: "</string>
     <string name="return_">Return:</string>
+    <string name="to_local_time">To local time</string>
+    <string name="to_global_time">To global time</string>
 </resources>
