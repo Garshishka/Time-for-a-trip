@@ -12,6 +12,7 @@ import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 import retrofit2.create
 import ru.garshishka.timeforatrip.api.DataFeedState
+import ru.garshishka.timeforatrip.dto.Flight
 import ru.garshishka.timeforatrip.dto.Flights
 
 class TripViewModel : ViewModel() {
@@ -26,7 +27,7 @@ class TripViewModel : ViewModel() {
         load()
     }
 
-    fun load() = viewModelScope.launch {
+    private fun load() = viewModelScope.launch {
         _dataState.value = DataFeedState.Loading
         val logging = HttpLoggingInterceptor().apply {
             if (BuildConfig.DEBUG) {
@@ -55,5 +56,12 @@ class TripViewModel : ViewModel() {
         val trips = response.body() ?: throw RuntimeException("body is null")
         _tripsData.value = trips
         _dataState.value = DataFeedState.Idle
+    }
+
+    fun likeFlight(flight: Flight){
+        _tripsData.value?.let {data ->
+            val newData = data.copy(flights = data.flights.map { if(it==flight) it.copy(likedByMe = !flight.likedByMe) else it })
+            _tripsData.value = newData
+        }
     }
 }

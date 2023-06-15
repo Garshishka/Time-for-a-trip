@@ -9,6 +9,15 @@
         android:id="@+id/routesListFragment"
         android:name="ru.garshishka.timeforatrip.fragments.RoutesListFragment"
         android:label="RoutesListFragment"
-        tools:layout="@layout/fragment_routes_list"/>
+        tools:layout="@layout/fragment_routes_list">
+        <action
+            android:id="@+id/action_routesListFragment_to_oneFlightFragment"
+            app:destination="@id/oneFlightFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/oneFlightFragment"
+        android:name="ru.garshishka.timeforatrip.fragments.OneFlightFragment"
+        android:label="OneFlightFragment"
+        tools:layout="@layout/fragment_one_flight"/>
 
 </navigation>

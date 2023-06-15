@@ -15,7 +15,7 @@
     </style>
 
     <style name="Widget.AppTheme.LikeCheckBox"
-        parent="Widget.Material3.Button.IconButton">
+        parent="Widget.Material3.Button.IconButton.Outlined">
         <item name="iconTint">@color/like_checkbox_tint</item>
         <item name="minHeight">@dimen/like_dimen</item>
         <item name="minWidth">@dimen/like_dimen</item>

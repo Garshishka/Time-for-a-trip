@@ -5,13 +5,16 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.DiffUtil
 import androidx.recyclerview.widget.ListAdapter
 import androidx.recyclerview.widget.RecyclerView
+import ru.garshishka.timeforatrip.R
 import ru.garshishka.timeforatrip.databinding.LayoutFlightBinding
 import ru.garshishka.timeforatrip.dto.Flight
+import ru.garshishka.timeforatrip.utils.FlightInteractionListener
 import java.time.ZonedDateTime
 import java.time.format.DateTimeFormatter
 
 class FlightViewHolder(
     private val binding: LayoutFlightBinding,
+    private val flightInteractionListener: FlightInteractionListener,
 ) : RecyclerView.ViewHolder(binding.root) {
 
     fun bind(flight: Flight) {
@@ -25,18 +28,21 @@ class FlightViewHolder(
             startDate.text = startDateTime.format(formatterNew)
             endDate.text = endDateTime.format(formatterNew)
             priceText.text = "${flight.price} руб."
-            likeButton.isChecked = flight.likedByMe
-            likeButton.setOnClickListener {
-                likeButton.isChecked = !likeButton.isChecked
+            if (flight.likedByMe) {
+                likeIcon.setImageResource(R.drawable.favorite_48)
+            }
+            fligtBody.setOnClickListener {
+                flightInteractionListener.onFlightClick(flight)
             }
         }
     }
 }
 
-class FlightsAdapter() : ListAdapter<Flight, FlightViewHolder>(FlightDiffCallback()) {
+class FlightsAdapter(private val flightInteractionListener: FlightInteractionListener) : ListAdapter<Flight, FlightViewHolder>(FlightDiffCallback()) {
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): FlightViewHolder {
-        val binding = LayoutFlightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
-        return FlightViewHolder(binding)
+        val binding =
+            LayoutFlightBinding.inflate(LayoutInflater.from(parent.context), parent, false)
+        return FlightViewHolder(binding, flightInteractionListener)
     }
 
     override fun onBindViewHolder(holder: FlightViewHolder, position: Int) {
@@ -54,5 +60,4 @@ class FlightDiffCallback : DiffUtil.ItemCallback<Flight>() {
     override fun areContentsTheSame(oldItem: Flight, newItem: Flight): Boolean {
         return oldItem == newItem
     }
-
 }
