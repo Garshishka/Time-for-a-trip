@@ -27,7 +27,7 @@ class FlightViewHolder(
             val endDateTime = ZonedDateTime.parse(flight.endDate, formatter)
             startDate.text = startDateTime.format(formatterNew)
             endDate.text = endDateTime.format(formatterNew)
-            priceText.text = "${flight.price} руб."
+            priceText.text = "${flight.price} ₽"
             if (flight.likedByMe) {
                 likeIcon.setImageResource(R.drawable.favorite_48)
             }

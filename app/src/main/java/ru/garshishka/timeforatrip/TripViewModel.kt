@@ -4,13 +4,7 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
-import androidx.viewbinding.BuildConfig
 import kotlinx.coroutines.launch
-import okhttp3.OkHttpClient
-import okhttp3.logging.HttpLoggingInterceptor
-import retrofit2.Retrofit
-import retrofit2.converter.gson.GsonConverterFactory
-import retrofit2.create
 import ru.garshishka.timeforatrip.api.DataFeedState
 import ru.garshishka.timeforatrip.dto.Flight
 import ru.garshishka.timeforatrip.dto.Flights
@@ -29,24 +23,8 @@ class TripViewModel : ViewModel() {
 
     private fun load() = viewModelScope.launch {
         _dataState.value = DataFeedState.Loading
-        val logging = HttpLoggingInterceptor().apply {
-            if (BuildConfig.DEBUG) {
-                level = HttpLoggingInterceptor.Level.HEADERS
-            }
-        }
 
-        val okClient = OkHttpClient.Builder()
-            .addInterceptor(logging)
-            .build()
-
-        val retrofit = Retrofit.Builder()
-            .addConverterFactory(GsonConverterFactory.create())
-            .client(okClient)
-            .baseUrl("https://vmeste.wildberries.ru/api/avia-service/twirp/aviaapijsonrpcv1.WebAviaService/")
-            .build()
-
-        val apiService = retrofit.create<ApiService>()
-
+        val apiService = getApiService()
 
         val response = apiService.getTickets(BodyRequest())
         if (!response.isSuccessful) {

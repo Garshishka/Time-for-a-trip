@@ -45,7 +45,7 @@ class OneFlightFragment : Fragment() {
                 val endDateTime = ZonedDateTime.parse(flight.endDate, formatter)
                 startDate.text = startDateTime.format(formatterNew)
                 endDate.text = endDateTime.format(formatterNew)
-                priceText.text = "${flight.price} руб."
+                priceText.text = "${flight.price} ₽"
                 likeButton.isChecked = flight.likedByMe
                 likeButton.setOnClickListener {
                     viewModel.likeFlight(flight)
