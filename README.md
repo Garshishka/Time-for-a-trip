@@ -18,6 +18,9 @@
 
 ## Техническая сторона
 [ApiService](https://github.com/Garshishka/Time-for-a-trip/blob/master/app/src/main/java/ru/garshishka/timeforatrip/api/ApiService.kt) Для вызова по api данных о билетах используется retrofit. По заданию требуется лишь 1 вызов при запуске, поэтому оформлено без DI
+
 [ViewModel](https://github.com/Garshishka/Time-for-a-trip/blob/master/app/src/main/java/ru/garshishka/timeforatrip/TripViewModel.kt) Содержит данные о билетах, отвечает за лайки. В задании не указано, что лайки должны оставаться после выключения приложения, поэтому их состояние никак не сохраняется
+
 [Основной фрагмент](https://github.com/Garshishka/Time-for-a-trip/blob/master/app/src/main/java/ru/garshishka/timeforatrip/fragments/RoutesListFragment.kt). Содержит [RecyclerAdapter](https://github.com/Garshishka/Time-for-a-trip/blob/master/app/src/main/java/ru/garshishka/timeforatrip/viewholder/FlightViewHolder.kt) для списка билетов.
+
 [Фрагмент одного полета](https://github.com/Garshishka/Time-for-a-trip/blob/master/app/src/main/java/ru/garshishka/timeforatrip/fragments/OneFlightFragment.kt).
