@@ -5,4 +5,5 @@
     <string name="return_">"Возвращение: "</string>
     <string name="to_local_time">Локальное время</string>
     <string name="to_global_time">Глобальное время</string>
+    <string name="nothing_here">Здесь ничего нет, что-то пошло не так</string>
 </resources>

@@ -4,4 +4,5 @@
     <string name="return_">Return:</string>
     <string name="to_local_time">To local time</string>
     <string name="to_global_time">To global time</string>
+    <string name="nothing_here">Nothing here, something went wrong</string>
 </resources>

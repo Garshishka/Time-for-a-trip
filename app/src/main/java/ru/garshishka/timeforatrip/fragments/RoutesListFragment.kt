@@ -57,6 +57,7 @@ class RoutesListFragment : Fragment() {
             }
             dataState.observe(viewLifecycleOwner) {
                 binding.loading.isVisible = it == DataFeedState.Loading
+                binding.empty.isVisible = it == DataFeedState.Error
             }
         }
     }
